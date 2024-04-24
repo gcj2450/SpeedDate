@@ -7,3 +7,4 @@
     <ProjectReference Include="..\SpeedDate.ClientPlugins\SpeedDate.ClientPlugins.csproj" />
   </ItemGroup>
 </Project>
+<!--All client-plugins for a peer. Your game-client should make use of these-->
