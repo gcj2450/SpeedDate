@@ -6,6 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Npgsql" Version="5.0.18" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\SpeedDate.ClientPlugins.Spawner\SpeedDate.ClientPlugins.Spawner.csproj" />
     <ProjectReference Include="..\SpeedDate.Client\SpeedDate.Client.csproj" />
     <ProjectReference Include="..\SpeedDate\SpeedDate.csproj" />

@@ -177,6 +177,7 @@ namespace SpeedDate.ServerPlugins.Spawner
 
         private void HandleClientsSpawnRequest(IIncommingMessage message)
         {
+            Console.WriteLine("HandleClientsSpawnRequest");
             var data = message.Deserialize<ClientsSpawnRequestPacket>();
             var peer = message.Peer;
 
