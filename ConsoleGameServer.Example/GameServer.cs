@@ -29,7 +29,9 @@ namespace ConsoleGameServer.Example
         public void Start(string configFile)
         {
             _client.Started += () => ConnectedToMaster?.Invoke();
-            _client.Start(new FileConfigProvider($@"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\{configFile}"));
+            string cfgFile = $@"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\{configFile}";
+            Console.WriteLine($"file=======:{File.Exists(cfgFile)}");
+            _client.Start(new FileConfigProvider(cfgFile));
             Lobbies = _client.GetPlugin<LobbiesPlugin>();
             PeerInfo = _client.GetPlugin<PeerInfoPlugin>();
             Profiles = _client.GetPlugin<ProfilesPlugin>();

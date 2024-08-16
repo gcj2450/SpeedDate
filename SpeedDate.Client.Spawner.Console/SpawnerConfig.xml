@@ -6,7 +6,7 @@
   <SpawnerConfig
     MachineIp="127.0.0.1"
     AddWebGlFlag="false"
-    ExecutablePath="E:\\Repositories\\SpeedDate\\ConsoleGame\\bin\\Debug\\ConsoleGame.exe"
+    ExecutablePath="D:\GitHub\NodeJS\barebones-masterserver\SpeedDate\ConsoleGameServer.Example\bin\Debug\net7.0\ConsoleGameServer.Example.exe"
     SpawnInBatchMode="true"
     Region="EU" />
 

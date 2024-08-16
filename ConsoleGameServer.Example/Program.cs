@@ -7,12 +7,16 @@ namespace ConsoleGameServer.Example
     {
         static void Main(string[] args)
         {
-            Console.WriteLine($"Starting game with arguments: {string.Join(", ", args)}...");
+            Console.WriteLine($"=====Starting game with arguments: {string.Join(", ", args)}...");
 
             var server = new GameServer();
             server.ConnectedToMaster += () =>
             {
                 Console.WriteLine("Connected to Master");
+                if (CommandLineArgs.SpawnCode==null)
+                {
+                    CommandLineArgs.SpawnCode = "111";
+                }
                 server.Rooms.RegisterSpawnedProcess(
                     CommandLineArgs.SpawnId,
                     CommandLineArgs.SpawnCode,

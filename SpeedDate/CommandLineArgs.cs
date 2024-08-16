@@ -49,7 +49,7 @@ namespace SpeedDate
         /// <summary>
         /// SpawnId of the spawned process
         /// </summary>
-        public static int SpawnId { get; }
+        public static int SpawnId { get; set; }
 
         /// <summary>
         /// Port, assigned to the spawned process (most likely a game server)
@@ -60,7 +60,7 @@ namespace SpeedDate
         /// Code, which is used to ensure that there's no tampering with 
         /// spawned processes
         /// </summary>
-        public static string SpawnCode { get; }
+        public static string SpawnCode { get; set; }
 
         /// <summary>
         /// Path to the executable (used by the spawner)

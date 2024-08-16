@@ -1,5 +1,6 @@
 ﻿using SpeedDate.Network;
 using SpeedDate.Network.Utils.IO;
+using System;
 
 namespace SpeedDate.Packets.Spawner
 {
@@ -10,6 +11,7 @@ namespace SpeedDate.Packets.Spawner
 
         public override void ToBinaryWriter(EndianBinaryWriter writer)
         {
+            Console.WriteLine($"AAAAAA:========{(writer == null)},{SpawnId == null},{SpawnCode == null}");
             writer.Write(SpawnId);
             writer.Write(SpawnCode);
         }
