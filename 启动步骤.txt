@@ -1,3 +1,3 @@
 1. SpeedDate.Server.Console.exe
 2. SpeedDate.Client.Spawner.Console.exe
-3. SpeedDate.Client.Console.Example.exe
+3. 在VS中启动 SpeedDate.Client.Console.Example.exe

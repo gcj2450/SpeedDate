@@ -5,9 +5,6 @@
     <LangVersion>7.2</LangVersion>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Npgsql" Version="5.0.18" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\SpeedDate.ClientPlugins.Peer\SpeedDate.ClientPlugins.Peer.csproj" />
     <ProjectReference Include="..\SpeedDate.Client\SpeedDate.Client.csproj" />
     <ProjectReference Include="..\SpeedDate\SpeedDate.csproj" />

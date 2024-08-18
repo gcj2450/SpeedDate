@@ -69,7 +69,7 @@ namespace SpeedDate.ServerPlugins.Spawner
         public SpawnTask Spawn(RegisteredSpawner spawner, Dictionary<string, string> properties, string customArgs)
         {
             var task = new SpawnTask(GenerateSpawnTaskId(), spawner, properties, customArgs);
-
+            Console.WriteLine("AAAAAAAAAAA Register spawn task: " + task.SpawnId + "___" + task.UniqueCode);
             _spawnTasks[task.SpawnId] = task;
 
             spawner.AddTaskToQueue(task);
@@ -300,12 +300,15 @@ namespace SpeedDate.ServerPlugins.Spawner
         private void HandleRegisterSpawnedProcess(IIncommingMessage message)
         {
             var data = message.Deserialize<RegisterSpawnedProcessPacket>();
-
+            foreach (var item in _spawnTasks)
+            {
+                Console.WriteLine("AAAA: "+item.Key + "____" + item.Value.SpawnId);
+            }
             _spawnTasks.TryGetValue(data.SpawnId, out var task);
-
+            Console.WriteLine("AAAA:========= data.SpawnId: " + data.SpawnId+ " __task.UniqueCode: " + task.UniqueCode+ " data.SpawnCode: "+ data.SpawnCode);
             if (task == null)
             {
-                message.Respond("Invalid spawn task", ResponseStatus.Failed);
+                message.Respond("==Invalid spawn task", ResponseStatus.Failed);
                 _logger.Error("Process tried to register to an unknown task");
                 return;
             }
@@ -325,7 +328,11 @@ namespace SpeedDate.ServerPlugins.Spawner
         private void HandleCompleteSpawnProcess(IIncommingMessage message)
         {
             var data = message.Deserialize<SpawnFinalizationPacket>();
-
+            foreach (var item in _spawnTasks)
+            {
+                Console.WriteLine("AAAABBBB: " + item.Key + "____" + item.Value.SpawnId);
+            }
+            Console.WriteLine("AAAABBB:=========" + data.SpawnId);
             _spawnTasks.TryGetValue(data.SpawnId, out var task);
 
             if (task == null)
