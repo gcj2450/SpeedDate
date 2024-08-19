@@ -6,6 +6,7 @@ using System.Threading;
 using SpeedDate.Network;
 using SpeedDate.Network.Interfaces;
 using SpeedDate.Packets.Spawner;
+using static SpeedDate.CommandLineArgs;
 
 namespace SpeedDate.ClientPlugins.Spawner
 {
@@ -60,24 +61,27 @@ namespace SpeedDate.ClientPlugins.Spawner
             var spawnInBatchmode = _spawnerConfig.SpawnInBatchmode
                                    && !CommandLineArgs.DontSpawnInBatchmode;
 
-
+            //这里应该是CommandLineArgs.MasterIp传错了，应该是SpeedDateArgNames.MasterIp
+            string argss = " " +
+                            (spawnInBatchmode ? "-batchmode -nographics " : "") +
+                            (_spawnerConfig.AddWebGlFlag ? SpeedDateArgNames.WebGl + " " : "") +
+                            sceneNameArgument +
+                            $"{SpeedDateArgNames.MasterIp} {_client.Config.Network.Address} " +
+                            $"{SpeedDateArgNames.MasterPort} {_client.Config.Network.Port} " +
+                            $"{SpeedDateArgNames.SpawnId} {data.SpawnId} " +
+                            $"{SpeedDateArgNames.AssignedPort} {port} " +
+                            $"{SpeedDateArgNames.MachineIp} {machineIp} " +
+                            $"{SpeedDateArgNames.SpawnCode} \"{data.SpawnCode}\" " +
+                            data.CustomArgs;
             var startProcessInfo = new ProcessStartInfo(path)
             {
                 CreateNoWindow = true,
                 UseShellExecute = true,
-                Arguments = " " +
-                            (spawnInBatchmode ? "-batchmode -nographics " : "") +
-                            (_spawnerConfig.AddWebGlFlag ? CommandLineArgs.WebGl + " " : "") +
-                            sceneNameArgument +
-                            $"{CommandLineArgs.MasterIp} {_client.Config.Network.Address} " +
-                            $"{CommandLineArgs.MasterPort} {_client.Config.Network.Port} " +
-                            $"{CommandLineArgs.SpawnId} {data.SpawnId} " +
-                            $"{CommandLineArgs.AssignedPort} {port} " +
-                            $"{CommandLineArgs.MachineIp} {machineIp} " +
-                            $"{CommandLineArgs.SpawnCode} \"{data.SpawnCode}\" " +
-                            data.CustomArgs
+                Arguments = argss
             };
 
+            // argss: 127.0.0.1 60125 60125 -1 0 -1 10000  127.0.0.1  "22540f"
+            Console.WriteLine($"CCCCCCCC path:{path},args: {argss}");
             var processStarted = false;
 
             try

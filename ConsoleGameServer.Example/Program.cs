@@ -15,11 +15,16 @@ namespace ConsoleGameServer.Example
             server.ConnectedToMaster += () =>
             {
                 Console.WriteLine($"Connected to Master,SpawnCode: {CommandLineArgs.SpawnCode} ,SpawnId: {CommandLineArgs.SpawnId}");
-                if (CommandLineArgs.SpawnCode==null)
+                if (CommandLineArgs.SpawnCode == null)
                 {
+                    Console.WriteLine($"Connected to Master,SpawnCode==null get from last");
                     CommandLineArgs.SpawnCode = args[^1];
                 }
-                if (CommandLineArgs.SpawnId <0)
+                else
+                {
+                    Console.WriteLine($"Connected to Master,SpawnCode not null");
+                }
+                if (CommandLineArgs.SpawnId < 0)
                 {
                     CommandLineArgs.SpawnId = 0;
                 }

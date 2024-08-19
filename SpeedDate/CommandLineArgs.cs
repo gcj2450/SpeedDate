@@ -10,7 +10,10 @@ namespace SpeedDate
         static CommandLineArgs()
         {
             Args = Environment.GetCommandLineArgs();
-            
+            foreach (var item in Args)
+            {
+                Console.WriteLine($"CommandLineArgs GetCommandLineArgs: {item}");
+            }
             MasterPort = ExtractValueInt(SpeedDateArgNames.MasterPort, 60125);
             MasterIp = ExtractValue(SpeedDateArgNames.MasterIp);
             MachineIp = ExtractValue(SpeedDateArgNames.MachineIp);
@@ -28,9 +31,9 @@ namespace SpeedDate
 
             LobbyId = ExtractValueInt(SpeedDateArgNames.LobbyId);
             WebGl = IsProvided(SpeedDateArgNames.WebGl);
-            
+
         }
-        
+
         /// <summary>
         /// Port, which will be open on the master server
         /// </summary>
@@ -86,7 +89,7 @@ namespace SpeedDate
         /// Database connection string (user by some of the database implementations)
         /// </summary>
         public static string DbConnectionString { get; }
-        
+
         /// <summary>
         /// LobbyId, which is assigned to a spawned process
         /// </summary>
@@ -97,7 +100,7 @@ namespace SpeedDate
         /// support webgl clients
         /// </summary>
         public static bool WebGl { get; }
-        
+
         public static string ExtractValue(string argName, string defaultValue = null)
         {
             if (!Args.Contains(argName))
