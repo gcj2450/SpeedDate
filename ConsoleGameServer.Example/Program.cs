@@ -22,11 +22,15 @@ namespace ConsoleGameServer.Example
                 }
                 else
                 {
-                    Console.WriteLine($"Connected to Master,SpawnCode not null");
+                    Console.WriteLine($"Connected to Master,SpawnCode not null: {CommandLineArgs.SpawnCode}");
                 }
                 if (CommandLineArgs.SpawnId < 0)
                 {
                     CommandLineArgs.SpawnId = 0;
+                }
+                else
+                {
+                    Console.WriteLine($"Connected to Master,SpawnId>=0: {CommandLineArgs.SpawnId}");
                 }
                 server.Rooms.RegisterSpawnedProcess(
                     CommandLineArgs.SpawnId,
