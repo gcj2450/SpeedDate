@@ -1,3 +1,9 @@
 1. SpeedDate.Server.Console.exe
 2. SpeedDate.Client.Spawner.Console.exe
 3. 在VS中启动 SpeedDate.Client.Console.Example.exe
+
+启动cockroachDB：
+cockroach start-single-node --insecure --listen-addr=localhost
+
+导入数据库
+cockroach sql --insecure --host=localhost < D:\GitHub\NodeJS\barebones-masterserver\SpeedDateUnity\Assets\SpeedDate\CockroachDbSchema.txt

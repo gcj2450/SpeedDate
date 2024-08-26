@@ -40,17 +40,17 @@ namespace SpeedDate.ClientPlugins.Peer.Lobby
         public JoinedLobby(LobbyPlugin owner, LobbyDataPacket data, IMessageHandlerProvider client)
         {
             Data = data;
-            client.SetHandler((ushort) OpCodes.LobbyMemberPropertyChanged, HandleMemberPropertyChanged);
-            client.SetHandler((ushort) OpCodes.LeftLobby, HandleLeftLobbyMsg);
-            client.SetHandler((ushort) OpCodes.LobbyChatMessage, HandleLobbyChatMessageMsg);
-            client.SetHandler((ushort) OpCodes.LobbyMemberJoined, HandleLobbyMemberJoinedMsg);
-            client.SetHandler((ushort) OpCodes.LobbyMemberLeft, HandleLobbyMemberLeftMsg);
-            client.SetHandler((ushort) OpCodes.LobbyStateChange, HandleLobbyStateChangeMsg);
-            client.SetHandler((ushort) OpCodes.LobbyStatusTextChange, HandleLobbyStatusTextChangeMsg);
-            client.SetHandler((ushort) OpCodes.LobbyMemberChangedTeam, HandlePlayerTeamChangeMsg);
-            client.SetHandler((ushort) OpCodes.LobbyMemberReadyStatusChange, HandleLobbyMemberReadyStatusChangeMsg);
-            client.SetHandler((ushort) OpCodes.LobbyMasterChange, HandleLobbyMasterChangeMsg);
-            client.SetHandler((ushort) OpCodes.LobbyPropertyChanged, HandleLobbyPropertyChanged);
+            client.SetHandler((uint) OpCodes.LobbyMemberPropertyChanged, HandleMemberPropertyChanged);
+            client.SetHandler((uint) OpCodes.LeftLobby, HandleLeftLobbyMsg);
+            client.SetHandler((uint) OpCodes.LobbyChatMessage, HandleLobbyChatMessageMsg);
+            client.SetHandler((uint) OpCodes.LobbyMemberJoined, HandleLobbyMemberJoinedMsg);
+            client.SetHandler((uint) OpCodes.LobbyMemberLeft, HandleLobbyMemberLeftMsg);
+            client.SetHandler((uint) OpCodes.LobbyStateChange, HandleLobbyStateChangeMsg);
+            client.SetHandler((uint) OpCodes.LobbyStatusTextChange, HandleLobbyStatusTextChangeMsg);
+            client.SetHandler((uint) OpCodes.LobbyMemberChangedTeam, HandlePlayerTeamChangeMsg);
+            client.SetHandler((uint) OpCodes.LobbyMemberReadyStatusChange, HandleLobbyMemberReadyStatusChangeMsg);
+            client.SetHandler((uint) OpCodes.LobbyMasterChange, HandleLobbyMasterChangeMsg);
+            client.SetHandler((uint) OpCodes.LobbyPropertyChanged, HandleLobbyPropertyChanged);
 
             Properties = data.LobbyProperties;
             Members = data.Players;

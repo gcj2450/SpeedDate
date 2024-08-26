@@ -27,7 +27,7 @@ namespace SpeedDate.ClientPlugins.Peer.Lobby
 
         public void GetLobbyTypes(Action<IList<string>> lobbyTypesCallback, ErrorCallback errorCallback)
         {
-            Client.SendMessage((ushort)OpCodes.GetLobbyTypes, (status, response) =>
+            Client.SendMessage((uint)OpCodes.GetLobbyTypes, (status, response) =>
             {
                 if (status != ResponseStatus.Success)
                 {
@@ -68,7 +68,7 @@ namespace SpeedDate.ClientPlugins.Peer.Lobby
 
             properties[OptionKeys.LobbyFactoryId] = lobbyTypeId;
 
-            Client.SendMessage((ushort) OpCodes.CreateLobby, properties.ToBytes(), (status, response) =>
+            Client.SendMessage((uint) OpCodes.CreateLobby, properties.ToBytes(), (status, response) =>
             {
                 if (status != ResponseStatus.Success)
                 {
@@ -94,7 +94,7 @@ namespace SpeedDate.ClientPlugins.Peer.Lobby
             }
 
             // Send the message
-            Client.SendMessage((ushort) OpCodes.JoinLobby, lobbyId, (status, response) =>
+            Client.SendMessage((uint) OpCodes.JoinLobby, lobbyId, (status, response) =>
             {
                 if (status != ResponseStatus.Success)
                 {
@@ -119,7 +119,7 @@ namespace SpeedDate.ClientPlugins.Peer.Lobby
         /// </summary>
         public void LeaveLobby(int lobbyId, Action callback, ErrorCallback errorCallback)
         {
-            Client.SendMessage((ushort)OpCodes.LeaveLobby, lobbyId, (status, response) =>
+            Client.SendMessage((uint)OpCodes.LeaveLobby, lobbyId, (status, response) =>
             {
                 if (status != ResponseStatus.Success)
                     errorCallback.Invoke(response.AsString("Something went wrong when trying to leave a lobby"));
@@ -139,7 +139,7 @@ namespace SpeedDate.ClientPlugins.Peer.Lobby
                 return;
             }
 
-            Client.SendMessage((ushort) OpCodes.LobbySetReady, isReady ? 1 : 0, (status, response) =>
+            Client.SendMessage((uint) OpCodes.LobbySetReady, isReady ? 1 : 0, (status, response) =>
             {
                 if (status != ResponseStatus.Success)
                 {
@@ -163,7 +163,7 @@ namespace SpeedDate.ClientPlugins.Peer.Lobby
                 Properties = properties
             };
 
-            Client.SendMessage((ushort) OpCodes.SetLobbyProperties, packet, (status, response) =>
+            Client.SendMessage((uint) OpCodes.SetLobbyProperties, packet, (status, response) =>
             {
                 if (status != ResponseStatus.Success)
                 {
@@ -182,7 +182,7 @@ namespace SpeedDate.ClientPlugins.Peer.Lobby
         public void SetMyProperties(Dictionary<string, string> properties,
             SuccessCallback callback, ErrorCallback errorCallback)
         {
-            Client.SendMessage((ushort)OpCodes.SetMyLobbyProperties, properties.ToBytes(),
+            Client.SendMessage((uint)OpCodes.SetMyLobbyProperties, properties.ToBytes(),
                 (status, response) =>
                 {
                     if (status != ResponseStatus.Success)
@@ -206,7 +206,7 @@ namespace SpeedDate.ClientPlugins.Peer.Lobby
                 TeamName = teamName
             };
 
-            Client.SendMessage((ushort)OpCodes.JoinLobbyTeam, packet,
+            Client.SendMessage((uint)OpCodes.JoinLobbyTeam, packet,
                 (status, response) =>
                 {
                     if (status != ResponseStatus.Success)
@@ -225,7 +225,7 @@ namespace SpeedDate.ClientPlugins.Peer.Lobby
         /// </summary>
         public void SendChatMessage(string message)
         {
-            Client.SendMessage((ushort) OpCodes.LobbySendChatMessage, message);
+            Client.SendMessage((uint) OpCodes.LobbySendChatMessage, message);
         }
 
         /// <summary>
@@ -233,7 +233,7 @@ namespace SpeedDate.ClientPlugins.Peer.Lobby
         /// </summary>
         public void StartGame(SuccessCallback callback, ErrorCallback errorCallback)
         {
-            Client.SendMessage((ushort) OpCodes.LobbyStartGame, (status, response) =>
+            Client.SendMessage((uint) OpCodes.LobbyStartGame, (status, response) =>
             {
                 if (status != ResponseStatus.Success)
                 {
@@ -261,7 +261,7 @@ namespace SpeedDate.ClientPlugins.Peer.Lobby
                 return;
             }
 
-            Client.SendMessage((ushort)OpCodes.GetLobbyRoomAccess, properties.ToBytes(), (status, response) =>
+            Client.SendMessage((uint)OpCodes.GetLobbyRoomAccess, properties.ToBytes(), (status, response) =>
             {
                 if (status != ResponseStatus.Success)
                 {

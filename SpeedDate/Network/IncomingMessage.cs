@@ -14,7 +14,7 @@ namespace SpeedDate.Network
     {
         private readonly byte[] _data;
 
-        public IncommingMessage(ushort opCode, byte flags, byte[] data, DeliveryMethod deliveryMethod, IPeer peer)
+        public IncommingMessage(uint opCode, byte flags, byte[] data, DeliveryMethod deliveryMethod, IPeer peer)
         {
             OpCode = opCode;
             Peer = peer;
@@ -24,7 +24,7 @@ namespace SpeedDate.Network
 
         public IncommingMessage(OpCodes opCode, byte flags, byte[] data, DeliveryMethod deliveryMethod, IPeer peer)
         {
-            OpCode = (ushort) opCode;
+            OpCode = (uint) opCode;
             Peer = peer;
             _data = data;
 
@@ -38,7 +38,7 @@ namespace SpeedDate.Network
         /// <summary>
         ///     Operation code (message type)
         /// </summary>
-        public ushort OpCode { get; private set; }
+        public uint OpCode { get; private set; }
 
         /// <summary>
         ///     Sender

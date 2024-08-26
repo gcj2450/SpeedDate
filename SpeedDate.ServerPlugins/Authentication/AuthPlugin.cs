@@ -48,19 +48,19 @@ namespace SpeedDate.ServerPlugins.Authentication
         public override void Loaded()
         {
             // Set handlers
-            Server.SetHandler((ushort)OpCodes.LogIn, HandleLogIn);
-            Server.SetHandler((ushort)OpCodes.LogOut, HandleLogOut);
-            Server.SetHandler((ushort)OpCodes.RegisterAccount, HandleRegister);
-            Server.SetHandler((ushort)OpCodes.PasswordResetCodeRequest, HandlePasswordResetRequest);
-            Server.SetHandler((ushort)OpCodes.RequestEmailConfirmCode, HandleRequestEmailConfirmCode);
-            Server.SetHandler((ushort)OpCodes.ConfirmEmail, HandleEmailConfirmation);
-            Server.SetHandler((ushort)OpCodes.GetLoggedInCount, HandleGetLoggedInCount);
-            Server.SetHandler((ushort)OpCodes.PasswordChange, HandlePasswordChange);
-            Server.SetHandler((ushort)OpCodes.GetPeerAccountInfo, HandleGetPeerAccountInfo);
+            Server.SetHandler((uint)OpCodes.LogIn, HandleLogIn);
+            Server.SetHandler((uint)OpCodes.LogOut, HandleLogOut);
+            Server.SetHandler((uint)OpCodes.RegisterAccount, HandleRegister);
+            Server.SetHandler((uint)OpCodes.PasswordResetCodeRequest, HandlePasswordResetRequest);
+            Server.SetHandler((uint)OpCodes.RequestEmailConfirmCode, HandleRequestEmailConfirmCode);
+            Server.SetHandler((uint)OpCodes.ConfirmEmail, HandleEmailConfirmation);
+            Server.SetHandler((uint)OpCodes.GetLoggedInCount, HandleGetLoggedInCount);
+            Server.SetHandler((uint)OpCodes.PasswordChange, HandlePasswordChange);
+            Server.SetHandler((uint)OpCodes.GetPeerAccountInfo, HandleGetPeerAccountInfo);
 
             // AesKey handler
-            Server.SetHandler((ushort)OpCodes.AesKeyRequest, HandleAesKeyRequest);
-            Server.SetHandler((ushort)OpCodes.RequestPermissionLevel, HandlePermissionLevelRequest);
+            Server.SetHandler((uint)OpCodes.AesKeyRequest, HandleAesKeyRequest);
+            Server.SetHandler((uint)OpCodes.RequestPermissionLevel, HandlePermissionLevelRequest);
         }
 
         private void HandleLogOut(IIncommingMessage message)

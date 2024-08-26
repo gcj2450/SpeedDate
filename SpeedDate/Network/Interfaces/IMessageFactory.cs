@@ -12,7 +12,7 @@ namespace SpeedDate.Network.Interfaces
         /// </summary>
         /// <param name="opCode"></param>
         /// <returns></returns>
-        IMessage Create(ushort opCode);
+        IMessage Create(uint opCode);
 
         /// <summary>
         ///     Creates a message filled with data
@@ -20,7 +20,7 @@ namespace SpeedDate.Network.Interfaces
         /// <param name="opCode"></param>
         /// <param name="data"></param>
         /// <returns></returns>
-        IMessage Create(ushort opCode, byte[] data);
+        IMessage Create(uint opCode, byte[] data);
 
         /// <summary>
         ///     Reconstructs message bytes into an incomming message

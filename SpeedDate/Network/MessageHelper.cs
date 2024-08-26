@@ -80,7 +80,7 @@ namespace SpeedDate.Network
         /// </summary>
         /// <param name="opCode"></param>
         /// <returns></returns>
-        public static IMessage Create(ushort opCode)
+        public static IMessage Create(uint opCode)
         {
             return _factory.Create(opCode);
         }
@@ -91,7 +91,7 @@ namespace SpeedDate.Network
         /// <param name="opCode"></param>
         /// <param name="data"></param>
         /// <returns></returns>
-        public static IMessage Create(ushort opCode, byte[] data)
+        public static IMessage Create(uint opCode, byte[] data)
         {
             return _factory.Create(opCode, data);
         }
@@ -102,7 +102,7 @@ namespace SpeedDate.Network
         /// <param name="opCode"></param>
         /// <param name="message"></param>
         /// <returns></returns>
-        public static IMessage Create(ushort opCode, string message)
+        public static IMessage Create(uint opCode, string message)
         {
             return _factory.Create(opCode, Encoding.UTF8.GetBytes(message));
         }
@@ -113,14 +113,14 @@ namespace SpeedDate.Network
         /// <param name="opCode"></param>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static IMessage Create(ushort opCode, int value)
+        public static IMessage Create(uint opCode, int value)
         {
             var bytes = new byte[4];
             Converter.CopyBytes(value, bytes, 0);
             return _factory.Create(opCode, bytes);
         }
 
-        public static IMessage Create(ushort opCode, bool value)
+        public static IMessage Create(uint opCode, bool value)
         {
             var bytes = new byte[1];
             Converter.CopyBytes(value, bytes, 0);
@@ -128,7 +128,7 @@ namespace SpeedDate.Network
         }
 
 
-        public static IMessage Create(ushort opCode, ISerializablePacket packet)
+        public static IMessage Create(uint opCode, ISerializablePacket packet)
         {
             return Create(opCode, packet.ToBytes());
         }

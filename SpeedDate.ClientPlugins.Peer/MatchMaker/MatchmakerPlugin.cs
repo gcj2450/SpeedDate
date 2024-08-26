@@ -26,7 +26,7 @@ namespace SpeedDate.ClientPlugins.Peer.MatchMaker
                 return;
             }
 
-            Client.SendMessage((ushort) OpCodes.FindGames, filter.ToBytes(), (status, response) =>
+            Client.SendMessage((uint) OpCodes.FindGames, filter.ToBytes(), (status, response) =>
             {
                 if (status != ResponseStatus.Success)
                 {

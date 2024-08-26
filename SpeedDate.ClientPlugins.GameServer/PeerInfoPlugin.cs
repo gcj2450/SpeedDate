@@ -19,7 +19,7 @@ namespace SpeedDate.ClientPlugins.GameServer
                 return;
             }
 
-            Client.SendMessage((ushort)OpCodes.GetPeerAccountInfo, peerId, (status, response) =>
+            Client.SendMessage((uint)OpCodes.GetPeerAccountInfo, peerId, (status, response) =>
             {
                 if (status != ResponseStatus.Success)
                 {

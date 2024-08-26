@@ -22,8 +22,8 @@ namespace SpeedDate.ClientPlugins.Spawner
         {
             _spawnerRequestsDelegate = new ProcessSpawnerRequestHandler(Client, _config);
 
-            Client.SetHandler((ushort)OpCodes.SpawnRequest, HandleSpawnRequest);
-            Client.SetHandler((ushort)OpCodes.KillSpawnedProcess, HandleKillSpawnedProcessRequest);
+            Client.SetHandler((uint)OpCodes.SpawnRequest, HandleSpawnRequest);
+            Client.SetHandler((uint)OpCodes.KillSpawnedProcess, HandleKillSpawnedProcessRequest);
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace SpeedDate.ClientPlugins.Spawner
             }
 
             _logger.Info("Registering Spawner...");
-            Client.SendMessage((ushort) OpCodes.RegisterSpawner, new SpawnerOptions
+            Client.SendMessage((uint) OpCodes.RegisterSpawner, new SpawnerOptions
             {
                 MaxProcesses = _config.MaxProcesses,
                 Region = _config.Region
@@ -74,7 +74,7 @@ namespace SpeedDate.ClientPlugins.Spawner
                 A = spawnerId,
                 B = count
             };
-            Client.SendMessage((ushort)OpCodes.UpdateSpawnerProcessesCount, packet);
+            Client.SendMessage((uint)OpCodes.UpdateSpawnerProcessesCount, packet);
         }
 
         public void SetSpawnerRequestsDelegate(ISpawnerRequestsDelegate handler)

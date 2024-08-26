@@ -174,7 +174,7 @@ namespace SpeedDate.ClientPlugins.Spawner
             if (!_client.IsConnected)
                 return;
 
-            _client.SendMessage((ushort)OpCodes.ProcessStarted, new SpawnedProcessStartedPacket
+            _client.SendMessage((uint)OpCodes.ProcessStarted, new SpawnedProcessStartedPacket
             {
                 CmdArgs = cmdArgs,
                 ProcessId = processId,
@@ -187,7 +187,7 @@ namespace SpeedDate.ClientPlugins.Spawner
             if (!_client.IsConnected)
                 return;
 
-            _client.SendMessage((ushort)OpCodes.ProcessKilled, spawnId);
+            _client.SendMessage((uint)OpCodes.ProcessKilled, spawnId);
         }
 
     }

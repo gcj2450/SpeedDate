@@ -10,13 +10,13 @@ namespace SpeedDate.Network
     /// </summary>
     public class Message : IMessage
     {
-        public Message(ushort opCode) : this(opCode, new byte[0])
+        public Message(uint opCode) : this(opCode, new byte[0])
         {
             OpCode = opCode;
             Status = 0;
         }
 
-        public Message(ushort opCode, byte[] data)
+        public Message(uint opCode, byte[] data)
         {
             OpCode = opCode;
             Status = 0;
@@ -28,7 +28,7 @@ namespace SpeedDate.Network
         /// <summary>
         ///     Operation code, a.k.a message type
         /// </summary>
-        public ushort OpCode { get; private set; }
+        public uint OpCode { get; private set; }
 
         /// <summary>
         ///     Content of the message
@@ -81,7 +81,7 @@ namespace SpeedDate.Network
             var isAckResponse = (flags & (byte) MessageFlag.AckResponse) > 0;
 
             var packetSize = 1 // Flags
-                             + 2 // OpCode
+                             + 4 // OpCode
                              + 4 // Data Length
                              + dataLength // Data
                              + (isAckRequest ? 4 : 0) // Ack Request id
@@ -93,7 +93,7 @@ namespace SpeedDate.Network
             messagePacket[0] = flags;
             pointer++; // Write Flags
             converter.CopyBytes(OpCode, messagePacket, pointer);
-            pointer += 2; // Write OpCode
+            pointer += 4; // Write OpCode
             converter.CopyBytes(dataLength, messagePacket, pointer);
             pointer += 4; // Data Length
             Array.Copy(Data, 0, messagePacket, pointer, dataLength);

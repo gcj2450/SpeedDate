@@ -68,11 +68,11 @@ namespace SpeedDate.ServerPlugins.Profiles
         public override void Loaded()
         {
             _auth.LoggedIn += OnLoggedIn;
-            Server.SetHandler((ushort)OpCodes.ClientProfileRequest, HandleClientProfileRequest);
+            Server.SetHandler((uint)OpCodes.ClientProfileRequest, HandleClientProfileRequest);
 
             // Games dependency setup
-            Server.SetHandler((ushort)OpCodes.ServerProfileRequest, HandleGameServerProfileRequest);
-            Server.SetHandler((ushort)OpCodes.UpdateServerProfile, HandleProfileUpdates);
+            Server.SetHandler((uint)OpCodes.ServerProfileRequest, HandleGameServerProfileRequest);
+            Server.SetHandler((uint)OpCodes.UpdateServerProfile, HandleProfileUpdates);
 
         }
 
@@ -226,7 +226,7 @@ namespace SpeedDate.ServerPlugins.Profiles
                     profile.ClearUpdates();
                 }
 
-                profile.ClientPeer.SendMessage(MessageHelper.Create((ushort) OpCodes.UpdateClientProfile, ms.ToArray()),
+                profile.ClientPeer.SendMessage(MessageHelper.Create((uint) OpCodes.UpdateClientProfile, ms.ToArray()),
                     DeliveryMethod.ReliableOrdered);
             }
         }

@@ -8,12 +8,12 @@ namespace SpeedDate.Network
 {
     public class MessageFactory : IMessageFactory
     {
-        public IMessage Create(ushort opCode)
+        public IMessage Create(uint opCode)
         {
             return new Message(opCode);
         }
 
-        public IMessage Create(ushort opCode, byte[] data)
+        public IMessage Create(uint opCode, byte[] data)
         {
             return new Message(opCode, data);
         }
@@ -31,8 +31,8 @@ namespace SpeedDate.Network
             {
                 var converter = EndianBitConverter.Big;
                 var flags = buffer[start];
-                var opCode = converter.ToUInt16(buffer, start + 1);
-                var pointer = start + 3;
+                var opCode = converter.ToUInt32(buffer, start + 1); //原来是ToUInt16，因为opcode从ushort改为uint,所以改为ToUInt32
+                var pointer = start + 5;    //ushort比uint 少两个字节，所以由3改为5
 
                 var dataLength = converter.ToInt32(buffer, pointer);
                 pointer += 4;

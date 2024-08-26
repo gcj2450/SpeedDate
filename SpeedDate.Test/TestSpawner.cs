@@ -57,7 +57,7 @@ namespace SpeedDate.Test
                     spawnCode = data.SpawnCode;
 
                     message.Respond(ResponseStatus.Success);
-                    message.Peer.SendMessage((ushort) OpCodes.ProcessStarted, data.SpawnId);
+                    message.Peer.SendMessage((uint) OpCodes.ProcessStarted, data.SpawnId);
                 });
 
             //------------------------------------------------------
@@ -354,7 +354,7 @@ namespace SpeedDate.Test
                     spawnCode = data.SpawnCode;
 
                     message.Respond(ResponseStatus.Success);
-                    message.Peer.SendMessage((ushort) OpCodes.ProcessStarted, data.SpawnId);
+                    message.Peer.SendMessage((uint) OpCodes.ProcessStarted, data.SpawnId);
                 });
 
             //Register a spawner
@@ -467,7 +467,7 @@ namespace SpeedDate.Test
                     spawnCode = data.SpawnCode;
 
                     message.Respond(ResponseStatus.Success);
-                    message.Peer.SendMessage((ushort) OpCodes.ProcessStarted, data.SpawnId);
+                    message.Peer.SendMessage((uint) OpCodes.ProcessStarted, data.SpawnId);
                 });
 
             //Register a spawner
@@ -612,7 +612,7 @@ namespace SpeedDate.Test
                     //By default, the spawn-data is passed via commandline-arguments
                     spawnId = data.SpawnId;
                     message.Respond(ResponseStatus.Success);
-                    message.Peer.SendMessage((ushort) OpCodes.ProcessStarted, data.SpawnId);
+                    message.Peer.SendMessage((uint) OpCodes.ProcessStarted, data.SpawnId);
                 });
 
             //Register a spawner

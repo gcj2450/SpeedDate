@@ -214,7 +214,7 @@ namespace SpeedDate.ServerPlugins.Spawner
             task.StatusChanged += status =>
             {
                 // Send status update
-                message.Peer.SendMessage((ushort)OpCodes.SpawnRequestStatusChange, new SpawnStatusUpdatePacket
+                message.Peer.SendMessage((uint)OpCodes.SpawnRequestStatusChange, new SpawnStatusUpdatePacket
                 {
                     SpawnId = task.SpawnId,
                     Status = status

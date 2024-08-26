@@ -48,7 +48,7 @@ namespace SpeedDate.ClientPlugins.GameServer
                 return;
             }
 
-            Client.SendMessage((ushort) OpCodes.RegisterRoom, options, (status, response) =>
+            Client.SendMessage((uint) OpCodes.RegisterRoom, options, (status, response) =>
             {
                 if (status != ResponseStatus.Success)
                 {
@@ -90,7 +90,7 @@ namespace SpeedDate.ClientPlugins.GameServer
                 return;
             }
 
-            client.SendMessage((ushort)OpCodes.DestroyRoom, roomId, (status, response) =>
+            client.SendMessage((uint)OpCodes.DestroyRoom, roomId, (status, response) =>
             {
                 if (status != ResponseStatus.Success)
                 {
@@ -130,7 +130,7 @@ namespace SpeedDate.ClientPlugins.GameServer
                 Token = token
             };
 
-            Client.SendMessage((ushort)OpCodes.ValidateRoomAccess, packet, (status, response) =>
+            Client.SendMessage((uint)OpCodes.ValidateRoomAccess, packet, (status, response) =>
             {
                 if (status != ResponseStatus.Success)
                 {
@@ -170,7 +170,7 @@ namespace SpeedDate.ClientPlugins.GameServer
                 RoomId =  roomId
             };
 
-            client.SendMessage((ushort) OpCodes.SaveRoomOptions, changePacket, (status, response) =>
+            client.SendMessage((uint) OpCodes.SaveRoomOptions, changePacket, (status, response) =>
             {
                 if (status != ResponseStatus.Success)
                 {
@@ -202,7 +202,7 @@ namespace SpeedDate.ClientPlugins.GameServer
                 RoomId = roomId
             };
 
-            Client.SendMessage((ushort) OpCodes.PlayerLeftRoom, packet, (status, response) =>
+            Client.SendMessage((uint) OpCodes.PlayerLeftRoom, packet, (status, response) =>
             {
                 if (status == ResponseStatus.Success)
                 {
@@ -255,7 +255,7 @@ namespace SpeedDate.ClientPlugins.GameServer
                 SpawnId = spawnId
             };
 
-            Client.SendMessage((ushort)OpCodes.RegisterSpawnedProcess, packet, (status, response) =>
+            Client.SendMessage((uint)OpCodes.RegisterSpawnedProcess, packet, (status, response) =>
             {
                 if (status != ResponseStatus.Success)
                 {
@@ -289,7 +289,7 @@ namespace SpeedDate.ClientPlugins.GameServer
                 FinalizationData = finalizationData ?? new Dictionary<string, string>()
             };
 
-            Client.SendMessage((ushort)OpCodes.CompleteSpawnProcess, packet, (status, response) =>
+            Client.SendMessage((uint)OpCodes.CompleteSpawnProcess, packet, (status, response) =>
             {
                 if (status != ResponseStatus.Success)
                 {

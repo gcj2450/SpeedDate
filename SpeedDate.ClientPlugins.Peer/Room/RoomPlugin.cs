@@ -40,7 +40,7 @@ namespace SpeedDate.ClientPlugins.Peer.Room
                 Password = password
             };
 
-            Client.SendMessage((ushort) OpCodes.GetRoomAccess, packet, (status, response) =>
+            Client.SendMessage((uint) OpCodes.GetRoomAccess, packet, (status, response) =>
             {
                 if (status != ResponseStatus.Success)
                 {

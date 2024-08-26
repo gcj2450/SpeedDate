@@ -1,6 +1,6 @@
 ﻿namespace SpeedDate
 {
-    public enum OpCodes : ushort
+    public enum OpCodes : uint
     {
         // Standard error code
         Error = 0,

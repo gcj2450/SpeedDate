@@ -32,9 +32,9 @@ namespace SpeedDate.ClientPlugins.Peer.Chat
 
         public override void Loaded()
         {
-            Client.SetHandler((ushort)OpCodes.UserJoinedChannel, HandleUserJoinedChannel);
-            Client.SetHandler((ushort)OpCodes.UserLeftChannel, HandleUserLeftChannel);
-            Client.SetHandler((ushort)OpCodes.ChatMessage, HandleChatMessage);
+            Client.SetHandler((uint)OpCodes.UserJoinedChannel, HandleUserJoinedChannel);
+            Client.SetHandler((uint)OpCodes.UserLeftChannel, HandleUserLeftChannel);
+            Client.SetHandler((uint)OpCodes.ChatMessage, HandleChatMessage);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace SpeedDate.ClientPlugins.Peer.Chat
                 return;
             }
 
-            Client.SendMessage((ushort)OpCodes.PickUsername, username, (status, response) =>
+            Client.SendMessage((uint)OpCodes.PickUsername, username, (status, response) =>
             {
                 if (status != ResponseStatus.Success)
                 {
@@ -71,7 +71,7 @@ namespace SpeedDate.ClientPlugins.Peer.Chat
                 return;
             }
 
-            Client.SendMessage((ushort) OpCodes.JoinChannel, channel, (status, response) =>
+            Client.SendMessage((uint) OpCodes.JoinChannel, channel, (status, response) =>
             {
                 if (status != ResponseStatus.Success)
                 {
@@ -95,7 +95,7 @@ namespace SpeedDate.ClientPlugins.Peer.Chat
                 return;
             }
 
-            Client.SendMessage((ushort)OpCodes.LeaveChannel, channel, (status, response) =>
+            Client.SendMessage((uint)OpCodes.LeaveChannel, channel, (status, response) =>
             {
                 if (status != ResponseStatus.Success)
                 {
@@ -119,7 +119,7 @@ namespace SpeedDate.ClientPlugins.Peer.Chat
                 return;
             }
 
-            Client.SendMessage((ushort)OpCodes.SetDefaultChannel, channel, (status, response) =>
+            Client.SendMessage((uint)OpCodes.SetDefaultChannel, channel, (status, response) =>
             {
                 if (status != ResponseStatus.Success)
                 {
@@ -142,7 +142,7 @@ namespace SpeedDate.ClientPlugins.Peer.Chat
                 return;
             }
 
-            Client.SendMessage((ushort)OpCodes.GetCurrentChannels, (status, response) =>
+            Client.SendMessage((uint)OpCodes.GetCurrentChannels, (status, response) =>
             {
                 if (status != ResponseStatus.Success)
                 {
@@ -167,7 +167,7 @@ namespace SpeedDate.ClientPlugins.Peer.Chat
                 return;
             }
 
-            Client.SendMessage((ushort)OpCodes.GetUsersInChannel, channel, (status, response) =>
+            Client.SendMessage((uint)OpCodes.GetUsersInChannel, channel, (status, response) =>
             {
                 if (status != ResponseStatus.Success)
                 {
@@ -236,7 +236,7 @@ namespace SpeedDate.ClientPlugins.Peer.Chat
         /// </summary>
         public void SendMessage(ChatMessagePacket packet, SuccessCallback callback, ErrorCallback errorCallback)
         {
-            Client.SendMessage((ushort)OpCodes.ChatMessage, packet, (status, response) =>
+            Client.SendMessage((uint)OpCodes.ChatMessage, packet, (status, response) =>
             {
                 if (status != ResponseStatus.Success)
                 {

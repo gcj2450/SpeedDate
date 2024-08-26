@@ -55,7 +55,7 @@ namespace SpeedDate.ClientPlugins.Peer.Auth
 
                 var encryptedData = Util.EncryptAES(data.ToBytes(), aesKey);
 
-                Client.SendMessage((ushort)OpCodes.RegisterAccount, encryptedData, (status, response) =>
+                Client.SendMessage((uint)OpCodes.RegisterAccount, encryptedData, (status, response) =>
                 {
 
                     if (status != ResponseStatus.Success)
@@ -134,7 +134,7 @@ namespace SpeedDate.ClientPlugins.Peer.Auth
 
                 var encryptedData = Util.EncryptAES(data.ToBytes(), aesKey);
 
-                Client.SendMessage((ushort) OpCodes.LogIn, encryptedData, (status, response) =>
+                Client.SendMessage((uint) OpCodes.LogIn, encryptedData, (status, response) =>
                 {
                     _isLoggingIn = false;
                     
@@ -171,7 +171,7 @@ namespace SpeedDate.ClientPlugins.Peer.Auth
                 return;
             }
 
-            Client.SendMessage((ushort)OpCodes.ConfirmEmail, code, (status, response) =>
+            Client.SendMessage((uint)OpCodes.ConfirmEmail, code, (status, response) =>
             {
                 if (status != ResponseStatus.Success)
                 {
@@ -200,7 +200,7 @@ namespace SpeedDate.ClientPlugins.Peer.Auth
                 return;
             }
 
-            Client.SendMessage((ushort)OpCodes.RequestEmailConfirmCode, (status, response) =>
+            Client.SendMessage((uint)OpCodes.RequestEmailConfirmCode, (status, response) =>
             {
                 if (status != ResponseStatus.Success)
                 {
@@ -223,7 +223,7 @@ namespace SpeedDate.ClientPlugins.Peer.Auth
                 return;
             }
 
-            Client.SendMessage((ushort)OpCodes.PasswordResetCodeRequest, email, (status, response) =>
+            Client.SendMessage((uint)OpCodes.PasswordResetCodeRequest, email, (status, response) =>
             {
                 if (status != ResponseStatus.Success)
                 {
@@ -254,7 +254,7 @@ namespace SpeedDate.ClientPlugins.Peer.Auth
                 {"password", data.NewPassword }
             };
 
-            Client.SendMessage((ushort)OpCodes.PasswordChange, dictionary.ToBytes(), (status, response) =>
+            Client.SendMessage((uint)OpCodes.PasswordChange, dictionary.ToBytes(), (status, response) =>
             {
                 if (status != ResponseStatus.Success)
                 {

@@ -12,7 +12,7 @@ namespace SpeedDate.Client
 {
     public sealed class SpeedDateClient : IClient, ISpeedDateStartable, IDisposable, IUpdatable
     {
-        private readonly Dictionary<ushort, IPacketHandler> _handlers;
+        private readonly Dictionary<uint, IPacketHandler> _handlers;
         private readonly SpeedDateKernel _kernel;
         private readonly SpeedDateNetListener _listener;
 
@@ -30,7 +30,7 @@ namespace SpeedDate.Client
 
         public SpeedDateClient()
         {
-            _handlers = new Dictionary<ushort, IPacketHandler>();
+            _handlers = new Dictionary<uint, IPacketHandler>();
             _kernel = new SpeedDateKernel();
             _listener = new SpeedDateNetListener();
             
@@ -80,97 +80,97 @@ namespace SpeedDate.Client
             Stop();
         }
 
-        public void SetHandler(ushort opCode, IncommingMessageHandler handler)
+        public void SetHandler(uint opCode, IncommingMessageHandler handler)
         {
             SetHandler(new PacketHandler(opCode, handler));
         }
 
         public void SetHandler(OpCodes opCode, IncommingMessageHandler handler)
         {
-            SetHandler(new PacketHandler((ushort) opCode, handler));
+            SetHandler(new PacketHandler((uint) opCode, handler));
         }
 
-        public void SendMessage(ushort opCode)
+        public void SendMessage(uint opCode)
         {
             _netPeer.SendMessage(opCode);
         }
 
-        public void SendMessage(ushort opCode, ResponseCallback responseCallback)
+        public void SendMessage(uint opCode, ResponseCallback responseCallback)
         {
             _netPeer.SendMessage(opCode, responseCallback);
         }
 
-        public void SendMessage(ushort opCode, ISerializablePacket packet)
+        public void SendMessage(uint opCode, ISerializablePacket packet)
         {
             _netPeer.SendMessage(opCode, packet);
         }
 
-        public void SendMessage(ushort opCode, ISerializablePacket packet, DeliveryMethod method)
+        public void SendMessage(uint opCode, ISerializablePacket packet, DeliveryMethod method)
         {
             _netPeer.SendMessage(opCode, packet, method);
         }
 
-        public void SendMessage(ushort opCode, ISerializablePacket packet, ResponseCallback responseCallback)
+        public void SendMessage(uint opCode, ISerializablePacket packet, ResponseCallback responseCallback)
         {
             _netPeer.SendMessage(opCode, packet, responseCallback);
         }
 
-        public void SendMessage(ushort opCode, byte[] data)
+        public void SendMessage(uint opCode, byte[] data)
         {
             _netPeer.SendMessage(opCode, data);
         }
 
-        public void SendMessage(ushort opCode, byte[] data, DeliveryMethod method)
+        public void SendMessage(uint opCode, byte[] data, DeliveryMethod method)
         {
             _netPeer.SendMessage(opCode, data, method);
         }
 
-        public void SendMessage(ushort opCode, byte[] data, ResponseCallback responseCallback)
+        public void SendMessage(uint opCode, byte[] data, ResponseCallback responseCallback)
         {
             _netPeer.SendMessage(opCode, data, responseCallback);
         }
 
-        public void SendMessage(ushort opCode, string data)
+        public void SendMessage(uint opCode, string data)
         {
             _netPeer.SendMessage(opCode, data);
         }
 
-        public void SendMessage(ushort opCode, string data, DeliveryMethod method)
+        public void SendMessage(uint opCode, string data, DeliveryMethod method)
         {
             _netPeer.SendMessage(opCode, data, method);
         }
 
-        public void SendMessage(ushort opCode, string data, ResponseCallback responseCallback)
+        public void SendMessage(uint opCode, string data, ResponseCallback responseCallback)
         {
             _netPeer.SendMessage(opCode, data, responseCallback);
         }
 
-        public void SendMessage(ushort opCode, int data)
+        public void SendMessage(uint opCode, int data)
         {
             _netPeer.SendMessage(opCode, data);
         }
 
-        public void SendMessage(ushort opCode, int data, DeliveryMethod method)
+        public void SendMessage(uint opCode, int data, DeliveryMethod method)
         {
             _netPeer.SendMessage(opCode, data, method);
         }
 
-        public void SendMessage(ushort opCode, int data, ResponseCallback responseCallback)
+        public void SendMessage(uint opCode, int data, ResponseCallback responseCallback)
         {
             _netPeer.SendMessage(opCode, data, responseCallback);
         }
 
-        public void SendMessage(ushort opCode, bool data)
+        public void SendMessage(uint opCode, bool data)
         {
             _netPeer.SendMessage(opCode, data);
         }
 
-        public void SendMessage(ushort opCode, bool data, DeliveryMethod method)
+        public void SendMessage(uint opCode, bool data, DeliveryMethod method)
         {
             _netPeer.SendMessage(opCode, data, method);
         }
 
-        public void SendMessage(ushort opCode, bool data, ResponseCallback responseCallback)
+        public void SendMessage(uint opCode, bool data, ResponseCallback responseCallback)
         {
             _netPeer.SendMessage(opCode, data, responseCallback);
         }

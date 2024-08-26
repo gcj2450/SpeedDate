@@ -273,7 +273,7 @@ namespace SpeedDate.ServerPlugins.Lobbies
             Unsubscribe(playerExt.Peer);
 
             // Notify player himself that he's removed
-            playerExt.Peer.SendMessage((ushort) OpCodes.LeftLobby, Id);
+            playerExt.Peer.SendMessage((uint) OpCodes.LeftLobby, Id);
 
             OnPlayerRemoved(member);
 
@@ -682,7 +682,7 @@ namespace SpeedDate.ServerPlugins.Lobbies
                 Sender = member.Username
             };
 
-            var msg = MessageHelper.Create((ushort)OpCodes.LobbyChatMessage, messagePacket.ToBytes());
+            var msg = MessageHelper.Create((uint)OpCodes.LobbyChatMessage, messagePacket.ToBytes());
 
             Broadcast(msg);
         }
@@ -797,7 +797,7 @@ namespace SpeedDate.ServerPlugins.Lobbies
                 IsError = isError
             };
 
-            Broadcast(MessageHelper.Create((ushort)OpCodes.LobbyChatMessage, msg.ToBytes()));
+            Broadcast(MessageHelper.Create((uint)OpCodes.LobbyChatMessage, msg.ToBytes()));
         }
 
         public void SendChatMessage(LobbyMember member, string message, bool isError = false,
@@ -810,7 +810,7 @@ namespace SpeedDate.ServerPlugins.Lobbies
                 IsError = isError
             };
 
-            var msg = MessageHelper.Create((ushort)OpCodes.LobbyChatMessage, packet.ToBytes());
+            var msg = MessageHelper.Create((uint)OpCodes.LobbyChatMessage, packet.ToBytes());
 
             member.Extension.Peer.SendMessage(msg, DeliveryMethod.ReliableUnordered);
         }
@@ -818,7 +818,7 @@ namespace SpeedDate.ServerPlugins.Lobbies
         protected virtual void OnPlayerAdded(LobbyMember member)
         {
             // Notify others about the new user
-            var msg = MessageHelper.Create((ushort)OpCodes.LobbyMemberJoined, member.GenerateDataPacket().ToBytes());
+            var msg = MessageHelper.Create((uint)OpCodes.LobbyMemberJoined, member.GenerateDataPacket().ToBytes());
 
             // Don't send to the person who just joined
             Broadcast(msg, p => p != member.Extension.Peer);
@@ -834,7 +834,7 @@ namespace SpeedDate.ServerPlugins.Lobbies
             }
 
             // Notify others about the user who left
-            Broadcast(MessageHelper.Create((ushort)OpCodes.LobbyMemberLeft, member.Username));
+            Broadcast(MessageHelper.Create((uint)OpCodes.LobbyMemberLeft, member.Username));
         }
 
         protected virtual void OnLobbyStateChange(LobbyState state)
@@ -865,13 +865,13 @@ namespace SpeedDate.ServerPlugins.Lobbies
             foreach (var lobbyMember in Members.Values)
                 SetReadyState(lobbyMember, false);
 
-            var msg = MessageHelper.Create((ushort) OpCodes.LobbyStateChange, (int)state);
+            var msg = MessageHelper.Create((uint) OpCodes.LobbyStateChange, (int)state);
             Broadcast(msg);
         }
 
         private void OnStatusTextChange(string text)
         {
-            var msg = MessageHelper.Create((ushort)OpCodes.LobbyStatusTextChange, text);
+            var msg = MessageHelper.Create((uint)OpCodes.LobbyStatusTextChange, text);
             Broadcast(msg);
         }
 
@@ -884,7 +884,7 @@ namespace SpeedDate.ServerPlugins.Lobbies
             };
 
             // Broadcast new properties
-            Broadcast(MessageHelper.Create((ushort)OpCodes.LobbyPropertyChanged, packet.ToBytes()));
+            Broadcast(MessageHelper.Create((uint)OpCodes.LobbyPropertyChanged, packet.ToBytes()));
         }
 
         protected virtual void OnPlayerPropertyChange(LobbyMember member, string propertyKey)
@@ -898,7 +898,7 @@ namespace SpeedDate.ServerPlugins.Lobbies
                 Value = member.GetProperty(propertyKey)
             };
 
-            Broadcast(MessageHelper.Create((ushort)OpCodes.LobbyMemberPropertyChanged, changesPacket.ToBytes()));
+            Broadcast(MessageHelper.Create((uint)OpCodes.LobbyMemberPropertyChanged, changesPacket.ToBytes()));
         }
 
         protected virtual void OnPlayerTeamChanged(LobbyMember member, LobbyTeam newTeam)
@@ -910,7 +910,7 @@ namespace SpeedDate.ServerPlugins.Lobbies
             };
 
             // Broadcast the change
-            var msg = MessageHelper.Create((ushort)OpCodes.LobbyMemberChangedTeam, packet.ToBytes());
+            var msg = MessageHelper.Create((uint)OpCodes.LobbyMemberChangedTeam, packet.ToBytes());
             Broadcast(msg);
         }
 
@@ -932,13 +932,13 @@ namespace SpeedDate.ServerPlugins.Lobbies
                 B = member.IsReady.ToString()
             };
 
-            Broadcast(MessageHelper.Create((ushort)OpCodes.LobbyMemberReadyStatusChange, packet.ToBytes()));
+            Broadcast(MessageHelper.Create((uint)OpCodes.LobbyMemberReadyStatusChange, packet.ToBytes()));
         }
 
         protected virtual void OnGameMasterChange()
         {
             var masterUsername = GameMaster != null ? GameMaster.Username : "";
-            var msg = MessageHelper.Create((ushort)OpCodes.LobbyMasterChange, masterUsername);
+            var msg = MessageHelper.Create((uint)OpCodes.LobbyMasterChange, masterUsername);
             Broadcast(msg);
         }
 

@@ -35,13 +35,13 @@ namespace SpeedDate.ServerPlugins.Chat
             auth.LoggedOut += OnUserLoggedOut;
 
             // Set handlers
-            Server.SetHandler((ushort)OpCodes.PickUsername, HandlePickUsername);
-            Server.SetHandler((ushort)OpCodes.JoinChannel, HandleJoinChannel);
-            Server.SetHandler((ushort)OpCodes.LeaveChannel, HandleLeaveChannel);
-            Server.SetHandler((ushort)OpCodes.GetCurrentChannels, HandeGetCurrentChannels);
-            Server.SetHandler((ushort)OpCodes.ChatMessage, HandleSendChatMessage);
-            Server.SetHandler((ushort)OpCodes.GetUsersInChannel, HandleGetUsersInChannel);
-            Server.SetHandler((ushort)OpCodes.SetDefaultChannel, HandleSetDefaultChannel);
+            Server.SetHandler((uint)OpCodes.PickUsername, HandlePickUsername);
+            Server.SetHandler((uint)OpCodes.JoinChannel, HandleJoinChannel);
+            Server.SetHandler((uint)OpCodes.LeaveChannel, HandleLeaveChannel);
+            Server.SetHandler((uint)OpCodes.GetCurrentChannels, HandeGetCurrentChannels);
+            Server.SetHandler((uint)OpCodes.ChatMessage, HandleSendChatMessage);
+            Server.SetHandler((uint)OpCodes.GetUsersInChannel, HandleGetUsersInChannel);
+            Server.SetHandler((uint)OpCodes.SetDefaultChannel, HandleSetDefaultChannel);
         }
 
         protected virtual bool AddChatUser(ChatUserExtension user)
@@ -239,7 +239,7 @@ namespace SpeedDate.ServerPlugins.Chat
                         return true;
                     }
 
-                    receiver.Peer.SendMessage((ushort)OpCodes.ChatMessage, message);
+                    receiver.Peer.SendMessage((uint)OpCodes.ChatMessage, message);
                     rawMessage.Respond(ResponseStatus.Success);
                     return true;
             }

@@ -135,87 +135,87 @@ namespace SpeedDate.Network.LiteNetLib
             SendMessage(message, deliveryMethod);
         }
 
-        public void SendMessage(ushort opCode)
+        public void SendMessage(uint opCode)
         {
             SendMessage(MessageHelper.Create(opCode), DeliveryMethod.ReliableUnordered);
         }
 
-        public void SendMessage(ushort opCode, ResponseCallback responseCallback)
+        public void SendMessage(uint opCode, ResponseCallback responseCallback)
         {
             SendMessage(MessageHelper.Create(opCode), responseCallback, DefaultTimeout, DeliveryMethod.ReliableUnordered);
         }
 
-        public void SendMessage(ushort opCode, ISerializablePacket packet)
+        public void SendMessage(uint opCode, ISerializablePacket packet)
         {
             SendMessage(MessageHelper.Create(opCode, packet), DeliveryMethod.ReliableUnordered);
         }
 
-        public void SendMessage(ushort opCode, ISerializablePacket packet, DeliveryMethod method)
+        public void SendMessage(uint opCode, ISerializablePacket packet, DeliveryMethod method)
         {
             SendMessage(MessageHelper.Create(opCode, packet), method);
         }
 
-        public void SendMessage(ushort opCode, ISerializablePacket packet, ResponseCallback responseCallback)
+        public void SendMessage(uint opCode, ISerializablePacket packet, ResponseCallback responseCallback)
         {
             SendMessage(MessageHelper.Create(opCode, packet), responseCallback, DefaultTimeout, DeliveryMethod.ReliableUnordered);
         }
 
-        public void SendMessage(ushort opCode, byte[] data)
+        public void SendMessage(uint opCode, byte[] data)
         {
             SendMessage(MessageHelper.Create(opCode, data), DeliveryMethod.ReliableUnordered);
         }
 
-        public void SendMessage(ushort opCode, byte[] data, DeliveryMethod method)
+        public void SendMessage(uint opCode, byte[] data, DeliveryMethod method)
         {
             SendMessage(MessageHelper.Create(opCode, data), method);
         }
 
-        public void SendMessage(ushort opCode, byte[] data, ResponseCallback responseCallback)
+        public void SendMessage(uint opCode, byte[] data, ResponseCallback responseCallback)
         {
             SendMessage(MessageHelper.Create(opCode, data), responseCallback, DefaultTimeout, DeliveryMethod.ReliableUnordered);
         }
 
-        public void SendMessage(ushort opCode, string data)
+        public void SendMessage(uint opCode, string data)
         {
             SendMessage(MessageHelper.Create(opCode, data), DeliveryMethod.ReliableUnordered);
         }
 
-        public void SendMessage(ushort opCode, string data, DeliveryMethod method)
+        public void SendMessage(uint opCode, string data, DeliveryMethod method)
         {
             SendMessage(MessageHelper.Create(opCode, data), method);
         }
 
-        public void SendMessage(ushort opCode, string data, ResponseCallback responseCallback)
+        public void SendMessage(uint opCode, string data, ResponseCallback responseCallback)
         {
             SendMessage(MessageHelper.Create(opCode, data), responseCallback, DefaultTimeout, DeliveryMethod.ReliableUnordered);
         }
 
-        public void SendMessage(ushort opCode, int data)
+        public void SendMessage(uint opCode, int data)
         {
             SendMessage(MessageHelper.Create(opCode, data), DeliveryMethod.ReliableUnordered);
         }
 
-        public void SendMessage(ushort opCode, int data, DeliveryMethod method)
+        public void SendMessage(uint opCode, int data, DeliveryMethod method)
         {
             SendMessage(MessageHelper.Create(opCode, data), method);
         }
 
-        public void SendMessage(ushort opCode, int data, ResponseCallback responseCallback)
+        public void SendMessage(uint opCode, int data, ResponseCallback responseCallback)
         {
             SendMessage(MessageHelper.Create(opCode, data), responseCallback, DefaultTimeout, DeliveryMethod.ReliableUnordered);
         }
 
-        public void SendMessage(ushort opCode, bool data)
+        public void SendMessage(uint opCode, bool data)
         {
             SendMessage(MessageHelper.Create(opCode, data), DeliveryMethod.ReliableUnordered);
         }
 
-        public void SendMessage(ushort opCode, bool data, DeliveryMethod method)
+        public void SendMessage(uint opCode, bool data, DeliveryMethod method)
         {
             SendMessage(MessageHelper.Create(opCode, data), method);
         }
 
-        public void SendMessage(ushort opCode, bool data, ResponseCallback responseCallback)
+        public void SendMessage(uint opCode, bool data, ResponseCallback responseCallback)
         {
             SendMessage(MessageHelper.Create(opCode, data), responseCallback, DefaultTimeout, DeliveryMethod.ReliableUnordered);
         }

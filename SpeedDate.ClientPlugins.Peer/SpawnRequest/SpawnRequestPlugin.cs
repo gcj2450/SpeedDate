@@ -18,7 +18,7 @@ namespace SpeedDate.ClientPlugins.Peer.SpawnRequest
 
         public override void Loaded()
         {
-            Client.SetHandler((ushort)OpCodes.SpawnRequestStatusChange, HandleStatusUpdate);
+            Client.SetHandler((uint)OpCodes.SpawnRequestStatusChange, HandleStatusUpdate);
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace SpeedDate.ClientPlugins.Peer.SpawnRequest
                 Region = region
             };        
 
-            Client.SendMessage((ushort) OpCodes.ClientsSpawnRequest, packet, (status, response) =>
+            Client.SendMessage((uint) OpCodes.ClientsSpawnRequest, packet, (status, response) =>
             {
                 if (status != ResponseStatus.Success)
                 {
@@ -83,7 +83,7 @@ namespace SpeedDate.ClientPlugins.Peer.SpawnRequest
                 return;
             }
 
-            Client.SendMessage((ushort)OpCodes.AbortSpawnRequest, spawnId, (status, response) =>
+            Client.SendMessage((uint)OpCodes.AbortSpawnRequest, spawnId, (status, response) =>
             {
                 if (status != ResponseStatus.Success)
                 {
@@ -107,7 +107,7 @@ namespace SpeedDate.ClientPlugins.Peer.SpawnRequest
                 return;
             }
 
-            client.SendMessage((ushort)OpCodes.GetSpawnFinalizationData, spawnId, (status, response) =>
+            client.SendMessage((uint)OpCodes.GetSpawnFinalizationData, spawnId, (status, response) =>
             {
                 if (status != ResponseStatus.Success)
                 {

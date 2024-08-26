@@ -9,13 +9,13 @@ namespace SpeedDate.Network
     {
         private readonly IncommingMessageHandler _handler;
 
-        public PacketHandler(ushort opCode, IncommingMessageHandler handler)
+        public PacketHandler(uint opCode, IncommingMessageHandler handler)
         {
             OpCode = opCode;
             _handler = handler;
         }
 
-        public ushort OpCode { get; }
+        public uint OpCode { get; }
 
         public void Handle(IIncommingMessage message)
         {

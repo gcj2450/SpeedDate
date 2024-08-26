@@ -16,7 +16,7 @@ namespace SpeedDate.Server
         private const string InternalServerErrorMessage = "Internal Server Error";
 
         private readonly SpeedDateKernel _kernel;
-        private readonly Dictionary<ushort, IPacketHandler> _handlers;
+        private readonly Dictionary<uint, IPacketHandler> _handlers;
 
         [Inject] private ILogger _logger;
 
@@ -31,7 +31,7 @@ namespace SpeedDate.Server
         public SpeedDateServer()
         {
             _kernel = new SpeedDateKernel();
-            _handlers = new Dictionary<ushort, IPacketHandler>();
+            _handlers = new Dictionary<uint, IPacketHandler>();
 
             _listener = new SpeedDateNetListener();
             _listener.ConnectionRequestEvent += request =>
@@ -110,14 +110,14 @@ namespace SpeedDate.Server
             Stop();
         }
 
-        public void SetHandler(ushort opCode, IncommingMessageHandler handler)
+        public void SetHandler(uint opCode, IncommingMessageHandler handler)
         {
             _handlers[opCode] = new PacketHandler(opCode, handler);
         }
 
         public void SetHandler(OpCodes opCode, IncommingMessageHandler handler)
         {
-            SetHandler((ushort)opCode, handler);
+            SetHandler((uint)opCode, handler);
         }
 
         public IPeer GetPeer(long peerId)

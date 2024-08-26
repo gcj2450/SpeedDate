@@ -8,7 +8,7 @@
         /// <summary>
         ///     Operation code of the message to be handled
         /// </summary>
-        ushort OpCode { get; }
+        uint OpCode { get; }
 
         /// <summary>
         ///     Handling of the message

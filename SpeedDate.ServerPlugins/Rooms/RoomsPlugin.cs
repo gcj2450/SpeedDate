@@ -28,12 +28,12 @@ namespace SpeedDate.ServerPlugins.Rooms
         public override void Loaded()
         {
             // Add handlers
-            Server.SetHandler((ushort)OpCodes.RegisterRoom, HandleRegisterRoom);
-            Server.SetHandler((ushort)OpCodes.DestroyRoom, HandleDestroyRoom);
-            Server.SetHandler((ushort)OpCodes.SaveRoomOptions, HandleSaveRoomOptions);
-            Server.SetHandler((ushort)OpCodes.GetRoomAccess, HandleGetRoomAccess);
-            Server.SetHandler((ushort)OpCodes.ValidateRoomAccess, HandleValidateRoomAccess);
-            Server.SetHandler((ushort)OpCodes.PlayerLeftRoom, HandlePlayerLeftRoom);
+            Server.SetHandler((uint)OpCodes.RegisterRoom, HandleRegisterRoom);
+            Server.SetHandler((uint)OpCodes.DestroyRoom, HandleDestroyRoom);
+            Server.SetHandler((uint)OpCodes.SaveRoomOptions, HandleSaveRoomOptions);
+            Server.SetHandler((uint)OpCodes.GetRoomAccess, HandleGetRoomAccess);
+            Server.SetHandler((uint)OpCodes.ValidateRoomAccess, HandleValidateRoomAccess);
+            Server.SetHandler((uint)OpCodes.PlayerLeftRoom, HandlePlayerLeftRoom);
             
             // Maintain unconfirmed accesses
             Task.Factory.StartNew(CleanUnconfirmedAccesses, TaskCreationOptions.LongRunning);

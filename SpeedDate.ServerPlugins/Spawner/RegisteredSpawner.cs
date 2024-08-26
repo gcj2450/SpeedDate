@@ -86,7 +86,7 @@ namespace SpeedDate.ServerPlugins.Spawner
                 SpawnCode = task.UniqueCode
             };
 
-            Peer.SendMessage((ushort)OpCodes.SpawnRequest, data, (status, response) =>
+            Peer.SendMessage((uint)OpCodes.SpawnRequest, data, (status, response) =>
             {
                 if (status != ResponseStatus.Success)
                 {
@@ -104,7 +104,7 @@ namespace SpeedDate.ServerPlugins.Spawner
                 SpawnId = spawnId
             };
 
-            Peer.SendMessage((ushort) OpCodes.KillSpawnedProcess, packet, (status, response) =>
+            Peer.SendMessage((uint) OpCodes.KillSpawnedProcess, packet, (status, response) =>
             {
                 callback.Invoke(status == ResponseStatus.Success);
             });
