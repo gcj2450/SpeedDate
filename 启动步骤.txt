@@ -7,3 +7,11 @@ cockroach start-single-node --insecure --listen-addr=localhost
 
 导入数据库
 cockroach sql --insecure --host=localhost < D:\GitHub\NodeJS\barebones-masterserver\SpeedDateUnity\Assets\SpeedDate\CockroachDbSchema.txt
+
+unity 客户端中需要配置游戏服务器启动地址：
+D:\GitHub\AAAAAA_MyRep\SpeedDate\SpeedDate.Server.Console\bin\Debug\net7.0\SpeedDate.Server.Console.exe
+
+SpeedDate.Client.Spawner.Console中SpawnerConfig.xml中的路径要配置
+D:\GitHub\AAAAAA_MyRep\SpeedDate\ConsoleGameServer.Example\bin\Debug\net7.0\ConsoleGameServer.Example.exe
+
+其中 D:\GitHub\AAAAAA_MyRep为服务器项目所在文件夹
